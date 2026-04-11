@@ -5,10 +5,11 @@
 \begin{definition}
 The \emph{perceived attractiveness function} is a mapping
 \[
-  a : O \times S \times T \times C \to [0,1]
+  a : O \times S \times T \times C \to [-1,1]
 \]
 where $O$ is the set of observers, $S$ is the set of perceptible stimuli, $T$ is the set of time points, and $C$ is the set of contexts.
-The value $a(o, s, t, c)$ represents the degree of attractiveness that observer $o \in O$ assigns to stimulus $s \in S$ at time $t \in T$ under context $c \in C$, with $0$ denoting complete indifference and $1$ denoting maximal desire.
+The value $a(o, s, t, c)$ represents the degree of attraction that observer $o \in O$ assigns to stimulus $s \in S$ at time $t \in T$ under context $c \in C$.
+A value of $1$ denotes maximal desire, $-1$ denotes maximal repulsion, and $0$ denotes complete indifference --- the neutral point between attraction and aversion.
 \end{definition}
 
 Because this is a lengthy signature, and combinations can become quite complex, we adopt the following notational conventions.
@@ -37,13 +38,14 @@ That is, the statement is understood to hold \emph{for all} values of the omitte
 
 For example:
 \begin{itemize}
-  \item $a(o, s) > 0$ means: for all $t \in T$ and $c \in C$, observer $o$ finds stimulus $s$ at least somewhat attractive, regardless of time or context.
-  \item $a(o, s, t) > 0.5$ means: at time $t$, observer $o$ finds $s$ attractive above the midpoint, across all contexts.
+  \item $a(o, s) > 0$ means: for all $t \in T$ and $c \in C$, observer $o$ finds stimulus $s$ net attractive --- above the neutral point --- regardless of time or context.
+  \item $a(o, s) < 0$ means: observer $o$ is actively repulsed by $s$ under all conditions.
+  \item $a(o, s, t) = 0$ means: at time $t$, observer $o$ is indifferent towards $s$ across all contexts.
   \item $a(o, s, \cdot, c) > a(o, s', \cdot, c)$ means: for all $t \in T$, observer $o$ finds $s$ more attractive than $s'$ in context $c$, at every point in time.
 \end{itemize}
 
 This is the precise sense in which omitting a parameter means \emph{the specific value does not matter}: any value of that parameter would make the statement true.
-When that is not the case --- when a claim holds only for \emph{some} values --- we write the quantifier explicitly: $\exists\, t \in T$ such that $a(o, s, t) > 0.5$.
+When that is not the case --- when a claim holds only for \emph{some} values --- we write the quantifier explicitly: $\exists\, t \in T$ such that $a(o, s, t) > 0$.
 
 \subsection{Stimuli}
 
@@ -93,5 +95,8 @@ A notion of \emph{conventional attractiveness} can be derived by aggregating ove
 \[
   \bar{a}(s, t, c) = \mathbb{E}_{o \in O}\bigl[a(o, s, t, c)\bigr].
 \]
+Since $a$ takes values in $[-1,1]$, so does $\bar{a}$.
+A positive value of $\bar{a}(s, t, c)$ indicates that the stimulus is conventionally attractive in that setting; a negative value indicates that it is conventionally repulsive; and a value near $0$ indicates that the population is effectively indifferent or divided.
+
 The partial application and partial context conventions apply to $\bar{a}$ in exactly the same way.
 For instance, $\bar{a}(s, \{\textit{aesthetic} = \alpha_0\})$ denotes the expected attractiveness of stimulus $s$ when appearance conditions are fixed to $\alpha_0$, averaged across all observers, times, and remaining context coordinates.
