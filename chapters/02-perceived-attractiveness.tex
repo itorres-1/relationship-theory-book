@@ -14,16 +14,29 @@ A value of $1$ denotes maximal desire, $-1$ denotes maximal repulsion, and $0$ d
 
 Because this is a lengthy signature, and combinations can become quite complex, we adopt the following notational conventions.
 
+\begin{assumption}[Domain disjointness]
+The domains $T$ and $C$ are disjoint from each other and from $O \cup S$:
+\[
+  T \cap C = \emptyset, \qquad T \cap (O \cup S) = \emptyset, \qquad C \cap (O \cup S) = \emptyset.
+\]
+No such constraint is placed on $O$ and $S$: a person may appear as both observer and stimulus, and this is intentional.
+In particular, $a(x, x, t, c)$ is well-defined and denotes the degree to which $x$ finds themselves attractive at time $t$ in context $c$ --- a natural model of self-perceived attractiveness.
+Positive values correspond to confidence; negative values to insecurity.
+\end{assumption}
+
 \begin{definition}[Partial application convention]
-A centered dot $(\cdot)$ in any argument position denotes that position as a free variable, yielding a function over that argument.
-Omitting trailing arguments is equivalent to placing dots in each omitted position.
+A centered dot $(\cdot)$ in any argument position explicitly marks that position as a free variable, yielding a function over that argument.
+Trailing arguments may be omitted entirely, which is equivalent to placing dots in each omitted position.
+When a supplied value's type unambiguously identifies its parameter position --- which is guaranteed by the disjointness assumption --- the dot may be omitted and the position inferred from the value itself.
+
 Formally, for any fixed $o \in O$, $s \in S$, $t \in T$, $c \in C$:
 \begin{align*}
-  a(o, s, \cdot, \cdot) &: T \times C \to [0,1], \quad (t, c) \mapsto a(o, s, t, c) \\
-  a(o, s, t, \cdot) &: C \to [0,1], \quad c \mapsto a(o, s, t, c) \\
-  a(o, s, \cdot, c) &: T \to [0,1], \quad t \mapsto a(o, s, t, c)
+  a(o, s, \cdot, \cdot) &: T \times C \to [-1,1], \quad (t, c) \mapsto a(o, s, t, c) \\
+  a(o, s, t, \cdot) &: C \to [-1,1], \quad c \mapsto a(o, s, t, c) \\
+  a(o, s, \cdot, c) &: T \to [-1,1], \quad t \mapsto a(o, s, t, c)
 \end{align*}
-When trailing arguments are omitted, e.g.\ $a(o, s)$, this is shorthand for $a(o, s, \cdot, \cdot)$.
+The trailing-omission shorthand $a(o, s)$ is equivalent to $a(o, s, \cdot, \cdot)$.
+When a non-trailing argument is omitted and its position is clear from type, no dot is required: $a(o, s, c)$ is valid when $c \in C$, since $C$ and $T$ are disjoint and the reader can unambiguously determine that $t$ is the free variable.
 \end{definition}
 
 This convention has two distinct uses depending on whether the expression appears as an \emph{object} or inside a \emph{proposition}.
@@ -96,7 +109,43 @@ A notion of \emph{conventional attractiveness} can be derived by aggregating ove
   \bar{a}(s, t, c) = \mathbb{E}_{o \in O}\bigl[a(o, s, t, c)\bigr].
 \]
 Since $a$ takes values in $[-1,1]$, so does $\bar{a}$.
-A positive value of $\bar{a}(s, t, c)$ indicates that the stimulus is conventionally attractive in that setting; a negative value indicates that it is conventionally repulsive; and a value near $0$ indicates that the population is effectively indifferent or divided.
+A positive value of $\bar{a}(s, t, c)$ indicates that the stimulus is conventionally attractive in that setting; a negative value indicates that it is conventionally repulsive; and a value near $0$ indicates that the population is effectively indifferent or \emph{divided} --- a distinction we return to below.
 
-The partial application and partial context conventions apply to $\bar{a}$ in exactly the same way.
-For instance, $\bar{a}(s, \{\textit{aesthetic} = \alpha_0\})$ denotes the expected attractiveness of stimulus $s$ when appearance conditions are fixed to $\alpha_0$, averaged across all observers, times, and remaining context coordinates.
+\subsection{Audience-Relative Attractiveness}
+
+Aggregating over all of $O$ is often too coarse.
+Attractiveness judgments vary systematically across subpopulations: by age, culture, familiarity, and other observer-level characteristics.
+To capture this, we parameterize the observer set.
+
+\begin{definition}[Parameterized observer set]
+Let $\Theta$ be a space of observer parameters.
+For each $\theta \in \Theta$, define
+\[
+  O(\theta) \subseteq O
+\]
+as the subpopulation of observers satisfying the conditions described by $\theta$.
+The \emph{audience-relative attractiveness} of stimulus $s$ with respect to audience $\theta$ is:
+\[
+  \bar{a}(\theta, s, t, c) = \mathbb{E}_{o \in O(\theta)}\bigl[a(o, s, t, c)\bigr].
+\]
+\end{definition}
+
+Placing $\theta$ in the observer position mirrors the signature of $a(o, s, t, c)$ directly: $\theta$ is to $\bar{a}$ what $o$ is to $a$, generalizing from a single observer to an audience.
+The parameter $\theta$ is a named constraint in the same spirit as context coordinates: it filters the observer set rather than specifying a single observer.
+For example:
+\begin{itemize}
+  \item $\bar{a}(\{\textit{age} = 25\text{--}35\},\, s, t, c)$ --- expected attractiveness among observers aged 25--35.
+  \item $\bar{a}(\{\textit{culture} = \text{Western}\},\, s, t, c)$ --- expected attractiveness within a culturally filtered audience.
+  \item $\bar{a}(\{\},\, s, t, c)$ --- no filter applied; reduces to $\bar{a}(s, t, c)$ over all of $O$.
+\end{itemize}
+
+The unparameterized form $\bar{a}(s, t, c)$ is thus the special case $\theta = \{\}$, and the two are consistent.
+
+\begin{remark}
+A value of $\bar{a}$ near $0$ can arise in two qualitatively different ways: the audience is genuinely indifferent, or the audience is sharply divided between attraction and repulsion whose effects cancel in expectation.
+These cases are indistinguishable from $\bar{a}$ alone.
+The variance $\mathrm{Var}_{o \in O(\theta)}[a(o, s, t, c)]$ separates them: low variance near $0$ indicates indifference; high variance near $0$ indicates division.
+\end{remark}
+
+The partial application convention applies to $\bar{a}$ in exactly the same way.
+For instance, $\bar{a}(\theta, s, \{\textit{aesthetic} = \alpha_0\})$ denotes the expected attractiveness of stimulus $s$ for audience $\theta$ when appearance conditions are fixed to $\alpha_0$, across all times and remaining context coordinates.
