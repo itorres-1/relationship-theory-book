@@ -8,8 +8,43 @@ The \emph{perceived attractiveness function} is a mapping
   a : O \times S \times T \times C \to [0,1]
 \]
 where $O$ is the set of observers, $S$ is the set of perceptible stimuli, $T$ is the set of time points, and $C$ is the set of contexts.
-The value $a(o, x, t, c)$ represents the degree of attractiveness that observer $o \in O$ assigns to stimulus $x \in S$ at time $t \in T$ under context $c \in C$, with $0$ denoting complete indifference and $1$ denoting maximal desire.
+The value $a(o, s, t, c)$ represents the degree of attractiveness that observer $o \in O$ assigns to stimulus $s \in S$ at time $t \in T$ under context $c \in C$, with $0$ denoting complete indifference and $1$ denoting maximal desire.
 \end{definition}
+
+Because this is a lengthy signature, and combinations can become quite complex, we adopt the following notational convention.
+
+\begin{definition}[Partial application convention]
+A centered dot $(\cdot)$ in any argument position denotes that position as a free variable, yielding a function over that argument.
+Omitting trailing arguments is equivalent to placing dots in each omitted position.
+Formally, for any fixed $o \in O$, $s \in S$, $t \in T$, $c \in C$:
+\begin{align*}
+  a(o, s, \cdot, \cdot) &: T \times C \to [0,1], \quad (t, c) \mapsto a(o, s, t, c) \\
+  a(o, s, t, \cdot) &: C \to [0,1], \quad c \mapsto a(o, s, t, c) \\
+  a(o, s, \cdot, c) &: T \to [0,1], \quad t \mapsto a(o, s, t, c)
+\end{align*}
+When trailing arguments are omitted, e.g.\ $a(o, s)$, this is shorthand for $a(o, s, \cdot, \cdot)$.
+\end{definition}
+
+This convention has two distinct uses depending on whether the expression appears as an \emph{object} or inside a \emph{proposition}, and it is worth being explicit about the difference.
+
+\paragraph{As an object.}
+When $a(o, s)$ appears on its own or as the subject of a definition, it denotes a function --- specifically, the function $(t, c) \mapsto a(o, s, t, c)$.
+No claim is being made about its values; it is simply a way of talking about attractiveness with the observer and stimulus fixed, leaving time and context as inputs yet to be supplied.
+
+\paragraph{In a proposition.}
+When $a(o, s)$ appears inside a statement --- an inequality, an equation, a comparison --- the free variables introduced by the dots are implicitly universally quantified.
+That is, the statement is understood to hold \emph{for all} values of the omitted arguments.
+
+For example:
+\begin{itemize}
+  \item $a(o, s) > 0$ means: for all $t \in T$ and $c \in C$, observer $o$ finds stimulus $s$ at least somewhat attractive, regardless of time or context.
+  \item $a(o, s, t) > 0.5$ means: at time $t$, observer $o$ finds $s$ attractive above the midpoint, across all contexts.
+  \item $a(o, s, \cdot, c) > a(o, s', \cdot, c)$ means: for all $t \in T$, observer $o$ finds $s$ more attractive than $s'$ in context $c$, at every point in time.
+\end{itemize}
+
+This is the precise sense in which omitting a parameter means \emph{the specific value does not matter}: any value of that parameter would make the statement true.
+When that is not the case --- when a claim holds only for \emph{some} values --- we write the quantifier explicitly: $\exists\, t \in T$ such that $a(o, s, t) > 0.5$.
+
 
 \subsection*{Stimuli}
 
@@ -44,8 +79,8 @@ This means any contextual factor introduced in a later chapter is implicitly a n
 
 \subsection*{Conventional Attractiveness}
 
-The function $a(o, x, t, c)$ is inherently subjective: different observers may assign different values to the same stimulus under identical conditions.
+The function $a(o, s, t, c)$ is inherently subjective: different observers may assign different values to the same stimulus under identical conditions.
 A notion of \emph{conventional attractiveness} can be derived by aggregating over a population of observers:
 \[
-  \bar{a}(x, t, c) = \mathbb{E}_{o \in O}\bigl[a(o, x, t, c)\bigr].
+  \bar{a}(s, t, c) = \mathbb{E}_{o \in O}\bigl[a(o, s, t, c)\bigr].
 \]
