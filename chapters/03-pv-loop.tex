@@ -1,5 +1,27 @@
 \chapter{The Presentation-Validation Loop}
 
+\begin{figure}[h]
+  \centering
+  \begin{tikzpicture}[
+    node/.style={
+      draw, rounded corners=6pt,
+      minimum width=2.8cm, minimum height=1cm,
+      align=center, font=\bfseries
+    },
+    >=Stealth, thick
+  ]
+    \node[node] (display)  at (90:3.2cm)  {Display};
+    \node[node] (desire)   at (210:3.2cm) {Desire};
+    \node[node] (dopamine) at (330:3.2cm) {Dopamine};
+
+    \draw[->] (display)  to[bend right=20] node[midway, left,  font=\small] {elicits} (desire);
+    \draw[->] (desire)   to[bend right=20] node[midway, below, font=\small] {reinforces} (dopamine);
+    \draw[->] (dopamine) to[bend right=20] node[midway, right, font=\small] {drives} (display);
+  \end{tikzpicture}
+  \caption{The Presentation-Validation (PV) loop.}
+  \label{fig:pv-loop}
+\end{figure}
+
 A recurring behavioral pattern in the context of attractiveness is the \emph{Presentation-Validation loop}, which can be summarized by three stages: \textbf{Display}, \textbf{Desire}, and \textbf{Dopamine}.
 
 \begin{definition}
