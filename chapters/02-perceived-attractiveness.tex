@@ -11,7 +11,7 @@ where $O$ is the set of observers, $S$ is the set of perceptible stimuli, $T$ is
 The value $a(o, s, t, c)$ represents the degree of attractiveness that observer $o \in O$ assigns to stimulus $s \in S$ at time $t \in T$ under context $c \in C$, with $0$ denoting complete indifference and $1$ denoting maximal desire.
 \end{definition}
 
-Because this is a lengthy signature, and combinations can become quite complex, we adopt the following notational convention.
+Because this is a lengthy signature, and combinations can become quite complex, we adopt the following notational conventions.
 
 \begin{definition}[Partial application convention]
 A centered dot $(\cdot)$ in any argument position denotes that position as a free variable, yielding a function over that argument.
@@ -25,7 +25,7 @@ Formally, for any fixed $o \in O$, $s \in S$, $t \in T$, $c \in C$:
 When trailing arguments are omitted, e.g.\ $a(o, s)$, this is shorthand for $a(o, s, \cdot, \cdot)$.
 \end{definition}
 
-This convention has two distinct uses depending on whether the expression appears as an \emph{object} or inside a \emph{proposition}, and it is worth being explicit about the difference.
+This convention has two distinct uses depending on whether the expression appears as an \emph{object} or inside a \emph{proposition}.
 
 \paragraph{As an object.}
 When $a(o, s)$ appears on its own or as the subject of a definition, it denotes a function --- specifically, the function $(t, c) \mapsto a(o, s, t, c)$.
@@ -45,42 +45,53 @@ For example:
 This is the precise sense in which omitting a parameter means \emph{the specific value does not matter}: any value of that parameter would make the statement true.
 When that is not the case --- when a claim holds only for \emph{some} values --- we write the quantifier explicitly: $\exists\, t \in T$ such that $a(o, s, t) > 0.5$.
 
-
-\subsection*{Stimuli}
+\subsection{Stimuli}
 
 The set $S$ consists of any perceptible entity or feature capable of eliciting an attraction response.
 This includes whole individuals, physical features (e.g., hair, body type), sensory traits (e.g., voice), behaviors or gestures, and presentation choices (e.g., clothing, style), as well as combinations thereof.
 This formulation deliberately avoids restricting attractiveness to whole persons, allowing partial or abstract stimuli to be evaluated.
 
-\subsection*{Context}
+\subsection{Context}
 
-Context is understood here as everything external to the agents themselves.
-The observer and the stimulus are the agents; time is the dimension along which the interaction unfolds; context is the world they are embedded in.
-This is a philosophically clean separation: the function $a$ keeps its agents and its dimension distinct from the situational conditions that modulate how those agents relate.
+Context is understood here as everything external to the subjects themselves.
+The observer and the stimulus are the subjects; time is the dimension along which the interaction unfolds; context is the world they are embedded in.
+This is a philosophically clean separation: the function $a$ keeps its subjects and its dimension distinct from the situational conditions that modulate how those subjects relate.
 
-Each context $c \in C$ is modeled as an element of a structured product space.
-Rather than fixing a single decomposition, we treat $C$ as an open product type:
+Each context $c \in C$ is modeled as an element of a named product space.
+Rather than fixing a single decomposition, we treat $C$ as an open collection of named coordinates:
 \[
-  C = C_1 \times C_2 \times \cdots \times C_n
+  C = \prod_{\lambda \in \Lambda} C_\lambda
 \]
-admitting whatever decomposition the theory demands without altering the signature of $a$.
-This gives us a stable core function that can accommodate new contextual dimensions in later chapters without redefinition.
+where $\Lambda$ is a set of coordinate names and each $C_\lambda$ is the domain of that coordinate.
+This admits whatever decomposition the theory demands without altering the signature of $a$.
 
-As a concrete illustration, one natural decomposition is:
+As a concrete illustration, one natural set of coordinates is:
 \[
-  c = (c_0,\, \alpha,\, \nu,\, \dots)
+  \Lambda = \{\, \textit{setting},\ \textit{aesthetic},\ \textit{visibility},\ \dots \,\}
 \]
-where $c_0$ denotes the situational setting (venue, occasion), $\alpha$ the aesthetic or appearance conditions, and $\nu$ the social visibility --- whether others are watching, and in what capacity.
+where \textit{setting} captures the venue or occasion, \textit{aesthetic} the appearance conditions, and \textit{visibility} whether others are watching and in what capacity.
 
 \begin{remark}
-We state the following as a standing convention throughout this book: \emph{$C$ is an open product space, admitting decomposition $C = C_1 \times C_2 \times \cdots \times C_n$ as the theory requires, without altering the signature of $a$.}
-This means any contextual factor introduced in a later chapter is implicitly a new coordinate of $C$, not a modification to the attractiveness function itself.
+We state the following as a standing convention throughout this book: $C$ is an open named product space, and any contextual factor introduced in a later chapter is implicitly a new coordinate in $\Lambda$, not a modification to the signature of $a$.
 \end{remark}
 
-\subsection*{Conventional Attractiveness}
+Because $C$ is accessed by name rather than position, the partial application convention extends naturally to individual context coordinates.
+A partial context specification is a finite set of named assignments:
+\[
+  \{\, \lambda_1 = v_1,\ \lambda_2 = v_2,\ \dots,\ \lambda_m = v_m \,\}
+  \quad \text{where } v_k \in C_{\lambda_k}.
+\]
+Writing $a(o, s, t, \{\lambda_1 = v_1, \dots, \lambda_m = v_m\})$ denotes the function over all $c \in C$ satisfying those assignments, with every unspecified coordinate universally quantified.
+Order does not matter, since the specification is a set.
+
+For example, $a(o, s, t, \{\textit{visibility} = \text{public}\})$ means: at time $t$, how attractive does observer $o$ find stimulus $s$ in a public setting --- across all values of \textit{setting}, \textit{aesthetic}, and any other coordinates.
+
+\section{Conventional Attractiveness}
 
 The function $a(o, s, t, c)$ is inherently subjective: different observers may assign different values to the same stimulus under identical conditions.
 A notion of \emph{conventional attractiveness} can be derived by aggregating over a population of observers:
 \[
   \bar{a}(s, t, c) = \mathbb{E}_{o \in O}\bigl[a(o, s, t, c)\bigr].
 \]
+The partial application and partial context conventions apply to $\bar{a}$ in exactly the same way.
+For instance, $\bar{a}(s, \{\textit{aesthetic} = \alpha_0\})$ denotes the expected attractiveness of stimulus $s$ when appearance conditions are fixed to $\alpha_0$, averaged across all observers, times, and remaining context coordinates.
