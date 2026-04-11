@@ -50,10 +50,12 @@ From VS Code, saving `main.tex` triggers a build automatically.
 | Action | Shortcut |
 |---|---|
 | Build project | `Cmd+Alt+B` |
-| Open PDF viewer | `Cmd+Alt+V` |
+| Open PDF tab (do once, then it stays open) | `Cmd+Alt+V` |
 | Forward search (jump from .tex to PDF location) | `Cmd+Alt+J` |
 | Show compiler log | `Cmd+Shift+P` → "LaTeX Workshop: Show LaTeX Compiler Log" |
 | SyncTeX (click PDF → jump to source) | `Cmd+Click` in PDF |
+
+> Tip: open the PDF tab once with `Cmd+Alt+V`, then just save (`Cmd+S`) — it auto-builds and the tab updates in place.
 
 ---
 
