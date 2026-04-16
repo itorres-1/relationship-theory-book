@@ -13,5 +13,6 @@
       "args": ["-pdf", "-output-directory=%OUTDIR%", "%DOC%"]
     }
   ],
-  "latex-workshop.view.pdf.viewer": "tab"
+  "latex-workshop.view.pdf.viewer": "tab",
+  "latex-workshop.latex.autoBuild.run": "onSave"
 }

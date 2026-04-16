@@ -1,0 +1,202 @@
+\chapter{The Inflation Flip}
+
+The Inflation Flip is an argumentative behavior pattern in which a specific, bounded grievance is inflated into a sweeping character indictment, and the person who inflated it then positions themselves as the victim of that indictment --- effectively reversing who is accountable to whom.
+Whether the person executing it is aware of what they are doing is largely beside the point: the pattern functions the same way regardless of intent, and its effects on the person who raised the original grievance are the same either way.
+It is worth understanding in the context of DARVO, a related pattern it is sometimes compared to, though the two are distinct in mechanism and should not be conflated.
+
+\section{DARVO: Brief Background}
+
+DARVO --- Deny, Attack, Reverse Victim and Offender --- is a term coined by psychologist Jennifer Freyd for a defensive pattern in which the person being held accountable denies the behavior, attacks the person raising the grievance, and repositions themselves as the true victim of the exchange.
+It is well documented across workplace conflicts, family dynamics, and romantic relationships, and is useful context here primarily because the Inflation Flip shares its terminal state --- role reversal --- while arriving there by a different route.
+
+\section{The Inflation Flip}
+
+The Inflation Flip is a distinct pattern that shares with DARVO only its terminal state: the reversal of victim and offender roles.
+It does not require a denial phase, and it does not require an overt attack.
+What it requires is inflation and self-victimization --- a different mechanism entirely, and in some ways a more insidious one.
+
+\begin{definition}[The Inflation Flip]
+The \emph{Inflation Flip} is a six-step argumentative behavior pattern initiated in response to a specific grievance, proceeding as follows:
+
+\begin{enumerate}
+  \item \textbf{Specific grievance.}
+  Person A raises a concrete, bounded criticism about a specific action or failure.
+  The criticism is narrow and factual.
+  \emph{Example: ``You rejected my call twice after I told you it was urgent.''}
+
+  \item \textbf{Overgeneralization.}
+  Person B does not engage with the specific criticism.
+  Instead, they inflate it into a sweeping indictment of their entire character, history, or identity.
+  A single data point becomes an absolute.
+  \emph{Example: ``You're saying I'm a terrible friend who is never there for you.''}
+
+  \item \textbf{Strawman construction.}
+  The inflated, exaggerated version of the criticism is treated as the actual argument being made.
+  Person B is no longer responding to what was said, but to a version they constructed --- one that is far easier to argue against because it is demonstrably false or extreme.
+
+  \item \textbf{Self-victimization.}
+  Person B positions themselves as the victim of this strawmanned attack.
+  The language shifts to emotional injury: \emph{``It hurts that you'd say that,''} \emph{``I can't believe you think that of me,''} \emph{``You're making me feel like I've never done anything right.''}
+  The original grievance has been replaced entirely by Person B's feelings about the grievance.
+
+  \item \textbf{Derailment.}
+  Person A is now on the defensive, spending their energy correcting the record and clarifying what they did and did not say.
+  The original specific grievance has evaporated.
+
+  \item \textbf{Role reversal.}
+  Person B is now the wounded party.
+  Person A is the one who must answer for their behavior.
+  The positions of accuser and accused have been fully exchanged.
+\end{enumerate}
+\end{definition}
+
+\begin{remark}[Verb forms and register]
+This pattern carries three forms of address, each suited to a different context.
+
+\emph{Inflation flip} (and its verb form, \emph{inflation flipping}) is the formal designation used in definitions, first introductions, and anywhere precision matters.
+It names both mechanisms explicitly and leaves no ambiguity.
+
+\emph{Iflip} (verb: \emph{iflipping}, past tense: \emph{iflipped}) is the informal shorthand, suitable once the pattern has been established between speaker and audience.
+The prefix \emph{i-} compresses \emph{inflation} and is understood as such by anyone already familiar with the term.
+It is short enough to use naturally in conversation and distinct enough that it cannot be confused with anything else.
+\begin{itemize}
+  \item \emph{``She iflipped me the second I brought it up.''}
+  \item \emph{``I didn't realize I was being iflipped until I was already apologizing.''}
+  \item \emph{``That's a classic iflip --- he never addressed what you actually said.''}
+\end{itemize}
+
+\emph{Flip} (verb: \emph{flipping}, past tense: \emph{flipped}) is the most compressed form and should only be used when the inflation sense is completely unambiguous from context.
+It is the most natural in the past tense and present progressive, but risks vagueness if the conversation has drifted or the listener is unfamiliar with the term.
+
+As a rule: use \emph{inflation flip} to introduce, \emph{iflip} to refer, and \emph{flip} only when you are certain it will land.
+\end{remark}
+
+Figure~\ref{fig:inflation-flip} illustrates the pipeline.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[
+    box/.style={
+      draw, rounded corners=4pt,
+      minimum width=2.1cm, minimum height=0.8cm,
+      align=center, font=\footnotesize
+    },
+    >=Stealth, thick,
+    node distance=0.45cm
+  ]
+    % Row 1: steps 1–3
+    \node[box] (g)  {Specific\\Grievance};
+    \node[box, right=of g] (o)  {Over-\\generalization};
+    \node[box, right=of o] (s)  {Strawman\\Construction};
+
+    % Row 2: steps 4–6 (right to left so arrows flow downward then left)
+    \node[box, below=0.7cm of s] (v)  {Self-\\victimization};
+    \node[box, left=of v]        (d)  {Derailment};
+    \node[box, left=of d]        (r)  {Role\\Reversal};
+
+    % Arrows row 1
+    \draw[->] (g) -- (o);
+    \draw[->] (o) -- (s);
+
+    % Turn down
+    \draw[->] (s) -- (v);
+
+    % Arrows row 2 (right to left)
+    \draw[->] (v) -- (d);
+    \draw[->] (d) -- (r);
+
+  \end{tikzpicture}
+  \caption{The Inflation Flip pipeline.}
+  \label{fig:inflation-flip}
+\end{figure}
+
+\section{Relationship to DARVO}
+
+The Inflation Flip and DARVO share a common terminal state: role reversal.
+They do not share a mechanism.
+
+DARVO achieves its reversal through denial and direct attack.
+The person denies the behavior, goes on the offensive, and positions themselves as the victim of the confrontation itself.
+The aggression is often legible --- there is something to push back against.
+
+The Inflation Flip reaches the same endpoint possibly without denial and/or without overt attack.
+Person B in the example above does not deny what happened.
+They do not accuse Person A of lying or attack their character.
+They simply receive the criticism and immediately expand it into something they can suffer from.
+The move presents as vulnerability rather than hostility, which is precisely what makes it harder to identify and name in real time.
+
+\begin{remark}
+The absence of the Deny and Attack phases is not a mitigating feature --- it is a structural one.
+Because the Inflation Flip generates no obvious aggression, the person who raised the original grievance has nothing visible to push back against.
+Calling it out requires naming a pattern rather than pointing to an act, which is a harder thing to do in the middle of a conversation.
+\end{remark}
+
+\begin{remark}
+Not all DARVO involves an Inflation Flip, and not all Inflation Flips involve DARVO.
+They are parallel patterns with a shared destination, not nested ones.
+Both belong to a broader class of accountability deflection maneuvers in which the terminal state is role reversal.
+\end{remark}
+
+\section{Why It Works}
+
+The Inflation Flip exploits several natural human tendencies simultaneously.
+
+Most people do not want to be seen as someone who attacks others unfairly.
+When Person B says ``you're making me feel like I've never been a good friend,'' Person A's instinct is to correct that impression --- to reassure, to walk it back.
+This is a socially conditioned response to perceived emotional harm.
+The Inflation Flip hijacks that instinct and uses it to bury the original issue.
+
+It also exploits the asymmetry between specific and absolute claims.
+Specific claims are difficult to deny: ``You didn't answer my call'' is a fact.
+Inflated claims, by contrast, are easy to dispute, qualify, and argue against indefinitely --- which is precisely the point.
+The moment Person A begins arguing against ``you think I'm always terrible,'' they have left the terrain of fact and entered the terrain of characterization.
+That terrain favors Person B, who constructed it.
+
+% \begin{proposition}
+% Let $G_s$ denote a specific, bounded grievance and let $G_g = I(G_s)$ denote its inflated generalization under the Inflation Flip.
+% The following asymmetry holds:
+% \begin{itemize}
+%   \item $G_s$ is difficult to deny because it is grounded in a particular action at a particular time.
+%   \item $G_g$ is easy to dispute because it is an absolute claim about character or pattern, which admits counterexamples and ambiguity.
+% \end{itemize}
+% The substitution of $G_g$ for $G_s$ as the subject of the exchange is therefore strategically advantageous to Person B regardless of whether the inflation is conscious.
+% \end{proposition}
+
+\section{Examples}
+
+\paragraph{Friendship conflict.}
+\begin{quote}
+\textbf{A:} ``You didn't show up when I needed you and I told you it was urgent.''\\
+\textbf{B:} ``So you're saying I'm a terrible friend who has never been there for you. I can't believe after everything I've done you'd make me feel like I've never done anything right.''
+\end{quote}
+Person A is now clarifying and apologizing.
+The missed call is no longer the subject.
+
+\paragraph{Workplace.}
+\begin{quote}
+\textbf{A:} ``You didn't credit me in that presentation.''\\
+\textbf{B:} ``Wow, so you think I always steal credit and I've never once acknowledged your work. That's really hurtful to hear.''
+\end{quote}
+Person A is now defending whether they really think that, not addressing the presentation.
+
+\paragraph{Romantic relationship.}
+\begin{quote}
+\textbf{A:} ``You were on your phone the entire dinner.''\\
+\textbf{B:} ``You're saying I'm emotionally unavailable and I never pay attention to you. I give so much to this relationship and this is what you think of me.''
+\end{quote}
+Person A is now managing Person B's feelings about a characterization Person A never made.
+
+\section{Identifying It in Real Time}
+
+\begin{remark}[Signal: absolute language]
+The clearest signal is the sudden appearance of absolute quantifiers: \emph{always}, \emph{never}, \emph{every time}, \emph{not once}.
+These quantifiers almost never appear in the original grievance but emerge immediately in the inflated response.
+When they appear, it is a reliable indicator that the specific has been inflated into the general and the Inflation Flip is underway.
+\end{remark}
+
+\begin{remark}[Signal: role inversion]
+The second signal is the sudden shift in who is expressing hurt.
+If you raised a grievance and within one or two exchanges you find yourself apologizing and explaining, ask: \emph{what am I apologizing for?}
+If the answer is something you did not actually say or claim, the flip has already occurred.
+\end{remark}
+
