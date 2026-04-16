@@ -101,15 +101,27 @@ Order does not matter, since the specification is a set.
 
 For example, $a(o, s, t, \{\textit{visibility} = \text{public}\})$ means: at time $t$, how attractive does observer $o$ find stimulus $s$ in a public setting --- across all values of \textit{setting}, \textit{aesthetic}, and any other coordinates.
 
-\section{Conventional Attractiveness}
+\begin{remark}[String labels for contexts]
+Just as with audiences, a plain string may be used as a context argument when it names a complete, recognizable situation rather than partially specifying coordinates.
+Writing $a(o, s, t, \text{``at a house party''})$ is valid: the string identifies a specific element $c \in C$, understood as fixing all relevant coordinates simultaneously.
+The structured and string forms serve different purposes and may be mixed freely:
+\begin{itemize}
+  \item $a(o, s, t, \text{``first date''})$ --- complete context, all coordinates fixed by the label.
+  \item $a(o, s, t, \{\textit{visibility} = \text{public}\})$ --- partial specification; only one coordinate pinned, the rest universally quantified.
+  \item $a(o, s, t, \{\textit{setting} = \text{``gym''}\})$ --- partial specification using a string value for one coordinate.
+\end{itemize}
+Use a string when you mean a whole situation; use the structured form when you mean to single out one dimension and leave the rest open.
+\end{remark}
+
+\section{Average Attractiveness}
 
 The function $a(o, s, t, c)$ is inherently subjective: different observers may assign different values to the same stimulus under identical conditions.
-A notion of \emph{conventional attractiveness} can be derived by aggregating over a population of observers:
+The \emph{average attractiveness} of a stimulus is obtained by aggregating over a population of observers:
 \[
   \bar{a}(s, t, c) = \mathbb{E}_{o \in O}\bigl[a(o, s, t, c)\bigr].
 \]
 Since $a$ takes values in $[-1,1]$, so does $\bar{a}$.
-A positive value of $\bar{a}(s, t, c)$ indicates that the stimulus is conventionally attractive in that setting; a negative value indicates that it is conventionally repulsive; and a value near $0$ indicates that the population is effectively indifferent or \emph{divided} --- a distinction we return to below.
+A positive value indicates that the stimulus is on average attractive; a negative value that it is on average repulsive; and a value near $0$ that the population is effectively indifferent or \emph{divided} --- a distinction we return to below.
 
 \subsection{Audience-Relative Attractiveness}
 
@@ -131,7 +143,6 @@ The \emph{audience-relative attractiveness} of stimulus $s$ with respect to audi
 \end{definition}
 
 Placing $\theta$ in the observer position mirrors the signature of $a(o, s, t, c)$ directly: $\theta$ is to $\bar{a}$ what $o$ is to $a$, generalizing from a single observer to an audience.
-The parameter $\theta$ is a named constraint in the same spirit as context coordinates: it filters the observer set rather than specifying a single observer.
 For example:
 \begin{itemize}
   \item $\bar{a}(\{\textit{age} = 25\text{--}35\},\, s, t, c)$ --- expected attractiveness among observers aged 25--35.
@@ -141,6 +152,19 @@ For example:
 
 The unparameterized form $\bar{a}(s, t, c)$ is thus the special case $\theta = \{\}$, and the two are consistent.
 
+\begin{remark}[String labels for audiences]
+The definition places no requirement on the form of $\theta$ --- it is simply an element of $\Theta$ that identifies a subpopulation.
+The structured form $\{\lambda_1 = v_1, \dots\}$ is one way to express an audience, but a plain string label is equally valid when the precise decomposition is not the point.
+Writing $\bar{a}(\text{``straight men''}, s)$ is well-defined: ``straight men'' is an element of $\Theta$ identifying the subpopulation $O(\text{``straight men''}) \subseteq O$.
+The string and the structured form are interchangeable shorthands for the same subset --- use whichever is clearer in context.
+Further examples:
+\begin{itemize}
+  \item $\bar{a}(\text{``straight men''}, \text{breasts}) > \bar{a}(\text{``straight men''}, \text{elbows})$
+  \item $\bar{a}(\text{``older women''}, \text{``salt-and-pepper hair''}) > \bar{a}(\text{``teenage boys''}, \text{``salt-and-pepper hair''})$
+  \item $\bar{a}(\text{``everyone''}, s) \approx \bar{a}(\{\}, s)$ \quad --- informal shorthand for the full population.
+\end{itemize}
+\end{remark}
+
 \begin{remark}
 A value of $\bar{a}$ near $0$ can arise in two qualitatively different ways: the audience is genuinely indifferent, or the audience is sharply divided between attraction and repulsion whose effects cancel in expectation.
 These cases are indistinguishable from $\bar{a}$ alone.
@@ -149,3 +173,88 @@ The variance $\mathrm{Var}_{o \in O(\theta)}[a(o, s, t, c)]$ separates them: low
 
 The partial application convention applies to $\bar{a}$ in exactly the same way.
 For instance, $\bar{a}(\theta, s, \{\textit{aesthetic} = \alpha_0\})$ denotes the expected attractiveness of stimulus $s$ for audience $\theta$ when appearance conditions are fixed to $\alpha_0$, across all times and remaining context coordinates.
+
+\subsection{Illustrative Examples}
+
+To ground the formalism, consider average attractiveness evaluated over the audience $\theta = \{\textit{gender} = \text{men}\}$, with time and context omitted --- meaning the claims are understood to hold on average across typical times and contexts.
+Here, stimuli are informal descriptions of body parts or features, treated as elements of $S$.
+
+The following ordering is illustrative but well-supported intuitively:
+\[
+  \bar{a}(\theta,\, \text{breasts})
+  \;>\;
+  \bar{a}(\theta,\, \text{buttocks})
+  \;\gg\;
+  \bar{a}(\theta,\, \text{hands})
+  \;>\;
+  \bar{a}(\theta,\, \text{elbows}).
+\]
+That is, among men as observers, female breasts and buttocks score highly positive on average, hands fall near or slightly above neutral, and elbows --- while not repulsive --- register close to indifference.
+
+This illustrates a key use of the formalism: statements that are often expressed vaguely (``men find breasts attractive'') can be written as precise inequalities involving $\bar{a}$, with the audience, stimulus, and omitted parameters all made explicit.
+
+Figure~\ref{fig:numberline} plots several stimuli along the $\bar{a}$ axis for this audience.
+
+\begin{figure}[htbp]
+  \centering
+  \begin{tikzpicture}[font=\footnotesize]
+    % Scale: value v → x = 4.3v (fits within ~4.3in text width)
+    % Range displayed: [-1, 1] → [-4.3, 4.3] cm
+
+    % Number line
+    \draw[thick, ->] (-4.6, 0) -- (5.0, 0)
+      node[right, font=\small] {$\bar{a}(\theta,\, s)$};
+
+    % Tick marks at -1, 0, 1
+    \foreach \v/\lbl in {-4.3/{$-1$}, 0/{$0$}, 4.3/{$1$}} {
+      \draw (\v, 0.12) -- (\v, -0.12) node[below=2pt] {\lbl};
+    }
+
+    % Each stimulus: dot on line + vertical stem + label at tip
+    % Stems alternate short (0.7cm) and tall (1.5cm) for adjacent items
+    % v * 4.3 = x position
+
+    % elbows   v = -0.20 → x = -0.86,  stem h = 0.7
+    \filldraw (-0.86, 0) circle (1.5pt);
+    \draw[thin] (-0.86, 0) -- (-0.86, 0.7);
+    \node[above] at (-0.86, 0.7) {elbows};
+
+    % knees    v = -0.05 → x = -0.22,  stem h = 1.5
+    \filldraw (-0.22, 0) circle (1.5pt);
+    \draw[thin] (-0.22, 0) -- (-0.22, 1.5);
+    \node[above] at (-0.22, 1.5) {knees};
+
+    % noses    v =  0.08 → x =  0.34,  stem h = 0.7
+    \filldraw (0.34, 0) circle (1.5pt);
+    \draw[thin] (0.34, 0) -- (0.34, 0.7);
+    \node[above] at (0.34, 0.7) {noses};
+
+    % hands    v =  0.20 → x =  0.86,  stem h = 1.5
+    \filldraw (0.86, 0) circle (1.5pt);
+    \draw[thin] (0.86, 0) -- (0.86, 1.5);
+    \node[above] at (0.86, 1.5) {hands};
+
+    % lips     v =  0.38 → x =  1.63,  stem h = 0.7
+    \filldraw (1.63, 0) circle (1.5pt);
+    \draw[thin] (1.63, 0) -- (1.63, 0.7);
+    \node[above] at (1.63, 0.7) {lips};
+
+    % buttocks v =  0.58 → x =  2.49,  stem h = 1.5
+    \filldraw (2.49, 0) circle (1.5pt);
+    \draw[thin] (2.49, 0) -- (2.49, 1.5);
+    \node[above] at (2.49, 1.5) {buttocks};
+
+    % cleavage v =  0.68 → x =  2.92,  stem h = 0.7
+    \filldraw (2.92, 0) circle (1.5pt);
+    \draw[thin] (2.92, 0) -- (2.92, 0.7);
+    \node[above] at (2.92, 0.7) {cleavage};
+
+    % breasts  v =  0.78 → x =  3.35,  stem h = 2.3
+    \filldraw (3.35, 0) circle (1.5pt);
+    \draw[thin] (3.35, 0) -- (3.35, 2.3);
+    \node[above] at (3.35, 2.3) {breasts};
+
+  \end{tikzpicture}
+  \caption{Approximate values of $\bar{a}(\{\textit{gender}=\text{men}\}, s)$ for selected stimuli $s$. Positions are illustrative, not empirically derived.}
+  \label{fig:numberline}
+\end{figure}
